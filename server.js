@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.static('public'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true}))
+app.use(express.urlencoded({ extended: true}));
 
 //gets index.html
 app.get('/', (req, res) => res.sendFile('public/index.html'));
@@ -20,9 +20,7 @@ app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public/notes.
 app.get('/api/notes', (req, res) => {
     console.info(`${req.method} request has been made to api database`)
     return res.json(dbNotes)
-})
-
-
+});
 
 //sends text info to db.json by creating an object with title and text input
 app.post('/api/notes', (req, res) => {
@@ -58,7 +56,7 @@ app.delete(`/api/notes/:id`, (req, res) => {
     console.info(`${req.method} request made on id ${req.params.id}`)
     const trashNote = req.params.id
     dbNotes = dbNotes.filter(function(noteObj) {
-        console.info(noteObj.id + '   '+trashNote)
+    //console.info(noteObj.id + '   ' + trashNote)
         return noteObj.id !== trashNote;
     })
     console.info(dbNotes)
