@@ -1,8 +1,10 @@
 const express = require('express');
 const path = require('path');
-let dbNotes = require('./db/db.json');
 const fs = require('fs');
+
+let dbNotes = require('./db/db.json');
 const uuid = require('./public/assets/js/uuid');
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
